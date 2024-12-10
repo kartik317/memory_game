@@ -1,0 +1,19 @@
+body{
+  margin: 0px;
+  background-color: #111111;
+  color: #eeeeee;
+}
+#grid {
+  width: 400px;
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(3, 150px); /* 4 columns of 100px width */
+  grid-template-rows: repeat(4, 150px); /* 3 rows of 100px height */
+  gap: 0; /* Remove gaps between grid items */
+}
+
+#grid img {
+  width: 100%; /* Make images fill their grid cells */
+  height: 100%;
+  object-fit: cover; /* Ensure images cover the entire cell, maintaining aspect ratio */
+}
