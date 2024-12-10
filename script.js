@@ -82,7 +82,7 @@ function checkMatch(){
   const optionTwoId = chosenCardIds[1];
   if(optionOneId == optionTwoId){
     cards[optionTwoId].setAttribute("src", "https://i.postimg.cc/cgbbcHtf/blank.png");
-    alert("you clicked same card");
+    displayPopup("you clicked same card");
     clicks--
   }
   else if(chosenArray[0] == chosenArray[1]){
@@ -91,17 +91,33 @@ function checkMatch(){
     cards[optionOneId].removeEventListener("click", flipCard);
     cards[optionTwoId].removeEventListener("click", flipCard);
     cardsWon.push(chosenArray);
-    alert("It's a Match ");
+    displayPopup("It's a Match 😃");
   }
   else{
     cards[optionOneId].setAttribute("src", "https://i.postimg.cc/cgbbcHtf/blank.png");
     cards[optionTwoId].setAttribute("src", "https://i.postimg.cc/cgbbcHtf/blank.png");
-    alert("Its not a match");
+    displayPopup("it's not a match 😐");
   }
   result.textContent = cardsWon.length;
   if(cardsWon.length === cardArray.length/2){
     result.textContent = `congratulations You Won after: ${clicks} clicks`;
+    displayPopup("You Won The game 🎉")
   }
   chosenArray = [];
   chosenCardIds = [];
+}
+
+function displayPopup(msg){
+  const popup = document.getElementById("popup");
+  const message = document.getElementById("message");
+  popup.style.opacity = 1;
+  popup.style.top = "50%";
+  popup.style.transform = "translate(-20%, -50%) scale(1)";
+  message.textContent = msg;
+}
+
+function closePopup(){
+  const popup = document.getElementById("popup");
+  popup.style.opacity = 0;
+  popup.style.transform = "translate(-20%, -50%) scale(0.1)";
 }
